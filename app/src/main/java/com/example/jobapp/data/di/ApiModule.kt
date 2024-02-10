@@ -1,6 +1,9 @@
 package com.example.jobapp.data.di
 
 import android.util.Log
+import com.example.jobapp.data.api.ApiService
+import com.example.jobapp.data.api.ApiServiceImpl
+import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
@@ -22,8 +25,7 @@ import io.ktor.util.StringValues
 import kotlinx.serialization.json.Json
 import javax.inject.Singleton
 
-
-@dagger.Module
+@Module
 @InstallIn(SingletonComponent::class)
 object ApiModule {
 
@@ -67,4 +69,9 @@ object ApiModule {
             }
         }
     }
+
+    @Singleton
+    @Provides
+    fun provideApiService(httpClient: HttpClient): ApiService = ApiServiceImpl(httpClient)
+
 }

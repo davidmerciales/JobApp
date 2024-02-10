@@ -2,14 +2,20 @@ package com.example.jobapp.data.di
 
 import com.example.jobapp.data.api.ApiService
 import com.example.jobapp.data.repository.JobRepositoryImpl
+import com.example.jobapp.domain.repository.job.JobRepository
+import dagger.Module
+import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 
-@dagger.Module
+@Module
 @InstallIn(SingletonComponent::class)
-object RepositoryModule {
+class RepositoryModule {
 
-    fun provideJobRepository(apiService: ApiService) : JobRepositoryImpl{
+    @Provides
+    @Singleton
+    fun provideJobRepository(apiService: ApiService) : JobRepository{
         return JobRepositoryImpl(apiService)
     }
 }
