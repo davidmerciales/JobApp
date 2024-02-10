@@ -1,7 +1,7 @@
-package com.example.jobapp.data.api
+package com.example.jobapp.domain.repository.job
 
 import com.example.jobapp.domain.model.response.JobListResponse
 
-interface ApiService {
+interface JobRepository {
     suspend fun getJobList(): JobListResponse
 }
