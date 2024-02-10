@@ -1,5 +1,7 @@
 package com.example.jobapp.domain.model.response
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class JobListResponse(
     val jobs: List<Jobs> = emptyList(),
     val index: Int = 0,
@@ -8,6 +10,7 @@ data class JobListResponse(
     val errors: List<String> = emptyList()
 )
 
+@Serializable
 data class Jobs(
     val id: String = "",
     val title: String = "",
@@ -20,6 +23,8 @@ data class Jobs(
     val salaryRange: String = "",
     val jobProviders: List<JobProviders> = emptyList()
 )
+
+@Serializable
 data class JobProviders(
     val jobProviders: String = "",
     val url: String = ""

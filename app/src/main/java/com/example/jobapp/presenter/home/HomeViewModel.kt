@@ -11,9 +11,10 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(
     private val jobListUseCase: JobListUseCase
 ): ViewModel() {
+    val state: HomeContract.HomeState = HomeContract.MutableHomeState()
     init {
         viewModelScope.launch {
-            jobListUseCase.invoke().jobs
+            state.jobs = jobListUseCase.invoke().jobs
         }
     }
 }

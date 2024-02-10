@@ -17,7 +17,7 @@ class ApiServiceImpl @Inject constructor(
         val response = httpClient.get("$BASE_URL/list"){
             headers{
                 append("X-RapidAPI-Key", "3bb6e57195msh49117cbc0e3734bp109120jsn066900d51b81")
-                append("X-RapidAPI-Key", "3bb6e57195msh49117cbc0e3734bp109120jsn066900d51b81")
+                append("X-RapidAPI-Host", "jobs-api14.p.rapidapi.com")
             }
             parameters{
                 parameter("query", "Web%20Developer")
@@ -30,7 +30,6 @@ class ApiServiceImpl @Inject constructor(
                 parameter("index", "0")
             }
         }
-
         return response.body()
     }
 }
