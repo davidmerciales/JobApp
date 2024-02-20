@@ -36,18 +36,9 @@ class MainActivity : ComponentActivity() {
 fun Greeting(
     name: String,
     modifier: Modifier = Modifier,
-    homeViewModel: HomeViewModel = hiltViewModel()
 ) {
     Text(
-        text = "Hello $name!",
+        text = name,
         modifier = modifier
     )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    JobAppTheme {
-        Greeting("Android")
-    }
 }
