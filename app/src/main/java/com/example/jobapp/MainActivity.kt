@@ -1,44 +1,33 @@
 package com.example.jobapp
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.jobapp.presenter.home.HomeViewModel
-import com.example.jobapp.ui.theme.JobAppTheme
-import dagger.hilt.android.AndroidEntryPoint
+ import android.os.Bundle
+ import androidx.activity.ComponentActivity
+ import androidx.activity.compose.setContent
+ import androidx.navigation.compose.NavHost
+ import androidx.navigation.compose.rememberNavController
+ import com.example.jobapp.ui.navigation.AppController
+ import com.example.jobapp.ui.theme.JobAppTheme
+ import dagger.hilt.android.AndroidEntryPoint
+ import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    @Inject
+    lateinit var appController: AppController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             JobAppTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
+                val navController = rememberNavController()
+                appController.navController = navController
+
+                NavHost(
+                    navController = navController,
+                    startDestination = ""
+                ){
+
                 }
             }
         }
     }
-}
-
-@Composable
-fun Greeting(
-    name: String,
-    modifier: Modifier = Modifier,
-) {
-    Text(
-        text = name,
-        modifier = modifier
-    )
 }
