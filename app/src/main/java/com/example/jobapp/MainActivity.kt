@@ -4,9 +4,12 @@ package com.example.jobapp
  import androidx.activity.ComponentActivity
  import androidx.activity.compose.setContent
  import androidx.navigation.compose.NavHost
+ import androidx.navigation.compose.composable
  import androidx.navigation.compose.rememberNavController
  import com.example.jobapp.ui.navigation.AppController
+ import com.example.jobapp.ui.screens.dashboard.Dashboard
  import com.example.jobapp.ui.theme.JobAppTheme
+ import com.example.jobapp.utils.Routes
  import dagger.hilt.android.AndroidEntryPoint
  import javax.inject.Inject
 
@@ -23,8 +26,12 @@ class MainActivity : ComponentActivity() {
 
                 NavHost(
                     navController = navController,
-                    startDestination = ""
+                    startDestination = Routes.Dashboard
                 ){
+
+                    composable(Routes.Dashboard){
+                        Dashboard()
+                    }
 
                 }
             }
